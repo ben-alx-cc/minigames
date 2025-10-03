@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>KeinPlan - 3D Minigames</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-cube">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+        </div>
+        <h1>KeinPlan</h1>
+        <p>Lade 3D-Minigames...</p>
+    </div>
+
+    <div id="main-menu" class="screen hidden">
+        <header>
+            <h1>KeinPlan</h1>
+            <p class="subtitle">3D Minigame Collection</p>
+        </header>
+        
+        <div class="game-grid">
+            <div class="game-card" data-game="cube-racer">
+                <div class="game-preview">
+                    <div class="preview-cube"></div>
+                </div>
+                <h3>Cube Racer</h3>
+                <p>Steuere einen Würfel durch ein 3D-Labyrinth</p>
+                <div class="difficulty">⭐⭐⭐</div>
+            </div>
+
+            <div class="game-card" data-game="gravity-balls">
+                <div class="game-preview">
+                    <div class="preview-sphere"></div>
+                </div>
+                <h3>Gravity Balls</h3>
+                <p>Physik-basiertes Ball-Spiel mit realistischer Schwerkraft</p>
+                <div class="difficulty">⭐⭐</div>
+            </div>
+
+            <div class="game-card" data-game="space-shooter">
+                <div class="game-preview">
+                    <div class="preview-ship"></div>
+                </div>
+                <h3>Space Shooter</h3>
+                <p>Kämpfe gegen außerirdische Feinde im Weltraum</p>
+                <div class="difficulty">⭐⭐⭐⭐</div>
+            </div>
+
+            <div class="game-card" data-game="block-puzzle">
+                <div class="game-preview">
+                    <div class="preview-blocks"></div>
+                </div>
+                <h3>3D Block Puzzle</h3>
+                <p>Strategisches Puzzle in drei Dimensionen</p>
+                <div class="difficulty">⭐⭐</div>
+            </div>
+        </div>
+
+        <div class="controls-info">
+            <p>📱 Touch-optimiert für Mobile | 🖱️ Desktop-Unterstützung</p>
+        </div>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <div id="game-canvas-container">
+            <canvas id="game-canvas"></canvas>
+        </div>
+        
+        <div id="game-ui">
+            <div class="game-hud">
+                <div class="score">
+                    <span>Score: </span><span id="score-value">0</span>
+                </div>
+                <div class="level">
+                    <span>Level: </span><span id="level-value">1</span>
+                </div>
+                <div class="lives">
+                    <span>Leben: </span><span id="lives-value">3</span>
+                </div>
+            </div>
+            
+            <div class="game-controls">
+                <button id="pause-btn" class="control-btn">⏸️ Pause</button>
+                <button id="restart-btn" class="control-btn">🔄 Neustart</button>
+                <button id="menu-btn" class="control-btn">🏠 Menü</button>
+            </div>
+        </div>
+
+        <div id="mobile-controls" class="mobile-controls hidden">
+            <div class="joystick-container">
+                <div class="joystick" id="joystick">
+                    <div class="joystick-knob"></div>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="action-btn" id="jump-btn">Jump</button>
+                <button class="action-btn" id="action-btn">Action</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-over-screen" class="screen hidden">
+        <div class="game-over-content">
+            <h2>Game Over!</h2>
+            <div class="final-score">
+                <p>Finaler Score: <span id="final-score">0</span></p>
+                <p>Bester Score: <span id="best-score">0</span></p>
+            </div>
+            <div class="game-over-buttons">
+                <button id="play-again-btn" class="btn primary">Nochmal spielen</button>
+                <button id="back-to-menu-btn" class="btn secondary">Zurück zum Menü</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <!-- Game Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/game-engine.js"></script>
+    <script src="js/games/cube-racer.js"></script>
+    <script src="js/games/gravity-balls.js"></script>
+    <script src="js/games/space-shooter.js"></script>
+    <script src="js/games/block-puzzle.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
